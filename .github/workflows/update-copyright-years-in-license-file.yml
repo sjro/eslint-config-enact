@@ -2,7 +2,7 @@ name: Update copyright year(s) in license file
 
 on:
   schedule:
-    - cron: "0 2 8 1 *"
+    - cron: "5 2 8 1 *"
 
 jobs:
   run:
@@ -15,3 +15,10 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: README.md
+        branchName: license/{{currentYear}}
+        commitTitle: update copyright
+        commitBody: Let's keep legal happy.
+        prTitle: Update Copyright year
+        prBody: It's that time of the year, let's update the license.
+        assignees: sj.ro
+        labels: documentation, legal
