@@ -1,0 +1,24 @@
+name: Update copyright year(s) in license file
+
+on:
+  schedule:
+    - cron: "45 3 8 1 *"
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: FantasticFiasco/action-update-license-year@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: README.md
+        branchName: license/{{currentYear}}
+        commitTitle: update my license
+        commitBody: Let's keep legal happy.
+        prTitle: Update my license
+        prBody: It's that time of the year, let's update the license.
+        assignees: sj.ro
+        labels: documentation, legal
